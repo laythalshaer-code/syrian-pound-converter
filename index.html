@@ -185,35 +185,35 @@
 </head>
 <body>
     <div class="container">
-        <h1>Syrian Pound Converter</h1>
-        <div class="subtitle">100 Old SP = 1 New SP</div>
+        <h1>محول الليرة السورية</h1>
+        <div class="subtitle">100 ليرة قديمة = 1 ليرة جديدة</div>
 
         <div class="section">
-            <div class="section-title">Conversion Mode</div>
+            <div class="section-title">نوع التحويل</div>
             <button class="mode-btn active" onclick="setMode('oldToNew')">
-                Old to New - Convert old pounds to new
+                قديم ← جديد - تحويل من القديمة إلى الجديدة
             </button>
             <button class="mode-btn" onclick="setMode('newToOld')">
-                New to Old - Convert new pounds to old
+                جديد ← قديم - تحويل من الجديدة إلى القديمة
             </button>
             <button class="mode-btn" onclick="setMode('combinedToNew')">
-                Combined to New - Mix to new pounds
+                مختلط ← جديد - تحويل المبلغين إلى جديدة
             </button>
             <button class="mode-btn" onclick="setMode('combinedToOld')">
-                Combined to Old - Mix to old pounds
+                مختلط ← قديم - تحويل المبلغين إلى قديمة
             </button>
             <button class="mode-btn" onclick="setMode('combinedToBoth')">
-                Combined to Both - Show both results
+                مختلط ← الاثنين - عرض النتيجتين معاً
             </button>
         </div>
 
         <div class="section">
             <div id="oldInput">
-                <label>Old Syrian Pounds</label>
+                <label>الليرة السورية القديمة</label>
                 <input type="number" id="oldAmount" value="0" oninput="calculate()">
             </div>
             <div id="newInput" class="hidden" style="margin-top: 15px;">
-                <label>New Syrian Pounds</label>
+                <label>الليرة السورية الجديدة</label>
                 <input type="number" id="newAmount" value="0" oninput="calculate()">
             </div>
         </div>
@@ -222,17 +222,17 @@
             <div id="resultArea"></div>
         </div>
 
-        <button class="btn btn-primary" onclick="saveToHistory()">Save to History</button>
-        <button class="btn btn-secondary" onclick="clearInputs()">Clear</button>
-        <button class="btn btn-info" onclick="showHistory()">View History</button>
+        <button class="btn btn-primary" onclick="saveToHistory()">حفظ في السجل</button>
+        <button class="btn btn-secondary" onclick="clearInputs()">مسح</button>
+        <button class="btn btn-info" onclick="showHistory()">عرض السجل</button>
     </div>
 
     <div class="history" id="historyModal">
         <div class="history-content">
             <span class="close-btn" onclick="closeHistory()">&times;</span>
-            <h2>Conversion History</h2>
+            <h2>سجل التحويلات</h2>
             <div id="historyList"></div>
-            <button class="btn btn-secondary" onclick="clearHistory()">Clear All History</button>
+            <button class="btn btn-secondary" onclick="clearHistory()">مسح السجل بالكامل</button>
         </div>
     </div>
 
@@ -285,21 +285,21 @@
             
             if (mode === 'oldToNew') {
                 const result = old / 100;
-                html = '<div class="result-label">New Syrian Pounds</div><div class="result-value">' + result.toFixed(2) + '</div>';
+                html = '<div class="result-label">الليرة السورية الجديدة</div><div class="result-value">' + result.toFixed(2) + '</div>';
             } else if (mode === 'newToOld') {
                 const result = newVal * 100;
-                html = '<div class="result-label">Old Syrian Pounds</div><div class="result-value">' + result.toFixed(2) + '</div>';
+                html = '<div class="result-label">الليرة السورية القديمة</div><div class="result-value">' + result.toFixed(2) + '</div>';
             } else if (mode === 'combinedToNew') {
                 const result = (old / 100) + newVal;
-                html = '<div class="result-label">Total in New SP</div><div class="result-value">' + result.toFixed(2) + '</div>';
+                html = '<div class="result-label">المجموع بالليرة الجديدة</div><div class="result-value">' + result.toFixed(2) + '</div>';
             } else if (mode === 'combinedToOld') {
                 const result = old + (newVal * 100);
-                html = '<div class="result-label">Total in Old SP</div><div class="result-value">' + result.toFixed(2) + '</div>';
+                html = '<div class="result-label">المجموع بالليرة القديمة</div><div class="result-value">' + result.toFixed(2) + '</div>';
             } else if (mode === 'combinedToBoth') {
                 const resultOld = old + (newVal * 100);
                 const resultNew = (old / 100) + newVal;
-                html = '<div class="result-label">Old Syrian Pounds</div><div class="result-value">' + resultOld.toFixed(2) + '</div>';
-                html += '<div style="margin-top:10px"><div class="result-label">New Syrian Pounds</div><div class="result-value">' + resultNew.toFixed(2) + '</div></div>';
+                html = '<div class="result-label">الليرة السورية القديمة</div><div class="result-value">' + resultOld.toFixed(2) + '</div>';
+                html += '<div style="margin-top:10px"><div class="result-label">الليرة السورية الجديدة</div><div class="result-value">' + resultNew.toFixed(2) + '</div></div>';
             }
             
             resultArea.innerHTML = html;
@@ -310,11 +310,11 @@
             const newVal = parseFloat(document.getElementById('newAmount').value) || 0;
             
             const modes = {
-                'oldToNew': 'Old to New',
-                'newToOld': 'New to Old',
-                'combinedToNew': 'Combined to New',
-                'combinedToOld': 'Combined to Old',
-                'combinedToBoth': 'Combined to Both'
+                'oldToNew': 'قديم ← جديد',
+                'newToOld': 'جديد ← قديم',
+                'combinedToNew': 'مختلط ← جديد',
+                'combinedToOld': 'مختلط ← قديم',
+                'combinedToBoth': 'مختلط ← الاثنين'
             };
             
             const entry = {
@@ -328,7 +328,7 @@
             history.unshift(entry);
             history = history.slice(0, 50);
             saveHistoryData();
-            alert('Saved to history!');
+            alert('تم الحفظ في السجل!');
         }
 
         function clearInputs() {
@@ -341,27 +341,27 @@
             const list = document.getElementById('historyList');
             
             if (history.length === 0) {
-                list.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">No history yet</p>';
+                list.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">لا يوجد سجل بعد</p>';
             } else {
                 let html = '';
                 history.forEach(entry => {
                     let result = '';
                     if (entry.mode === 'oldToNew') {
-                        result = 'Result: ' + (entry.old / 100).toFixed(2) + ' New SP';
+                        result = 'النتيجة: ' + (entry.old / 100).toFixed(2) + ' ل.س جديدة';
                     } else if (entry.mode === 'newToOld') {
-                        result = 'Result: ' + (entry.new * 100).toFixed(2) + ' Old SP';
+                        result = 'النتيجة: ' + (entry.new * 100).toFixed(2) + ' ل.س قديمة';
                     } else if (entry.mode === 'combinedToNew') {
-                        result = 'Result: ' + ((entry.old / 100) + entry.new).toFixed(2) + ' New SP';
+                        result = 'النتيجة: ' + ((entry.old / 100) + entry.new).toFixed(2) + ' ل.س جديدة';
                     } else if (entry.mode === 'combinedToOld') {
-                        result = 'Result: ' + (entry.old + (entry.new * 100)).toFixed(2) + ' Old SP';
+                        result = 'النتيجة: ' + (entry.old + (entry.new * 100)).toFixed(2) + ' ل.س قديمة';
                     } else {
-                        result = 'Old: ' + (entry.old + (entry.new * 100)).toFixed(2) + ', New: ' + ((entry.old / 100) + entry.new).toFixed(2);
+                        result = 'قديمة: ' + (entry.old + (entry.new * 100)).toFixed(2) + ' | جديدة: ' + ((entry.old / 100) + entry.new).toFixed(2);
                     }
                     
                     html += '<div class="history-item">';
                     html += '<div class="history-time">' + entry.time + '</div>';
                     html += '<div class="history-type">' + entry.type + '</div>';
-                    html += '<div>Old: ' + entry.old.toFixed(2) + ' | New: ' + entry.new.toFixed(2) + '</div>';
+                    html += '<div>قديمة: ' + entry.old.toFixed(2) + ' | جديدة: ' + entry.new.toFixed(2) + '</div>';
                     html += '<div style="margin-top:5px;font-weight:bold;">' + result + '</div>';
                     html += '</div>';
                 });
@@ -376,7 +376,7 @@
         }
 
         function clearHistory() {
-            if (confirm('Clear all history?')) {
+            if (confirm('هل تريد مسح السجل بالكامل؟')) {
                 history = [];
                 saveHistoryData();
                 showHistory();
